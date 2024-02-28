@@ -1,0 +1,177 @@
+a parte de app e a importante onde vai ter os controllers , requests , os modulos e middleware , provaiders
+
+a pasta bootstrap e parte de inicialização do app
+
+a pasta config  tem a configuração do freamwork , tem a config de onde vai conectar ao banco
+
+a questão de autenticacao também e  file system 
+
+configuração de email também estar na pasta config
+
+
+a pasta database é mapear o banco de dados 
+
+a pasta public ela que vai para web , todas requisição cair na parte public e vai para o index
+
+a pasta resources as views que o usuario vai interagir 
+
+pasta de rotas , para fazer rotas a aplicação
+
+
+pasta de test unitario 
+
+
+o vendor e gerenciamento de dependencias 
+
+//criando controler
+
+o Iluminate\http\Request  armazenar as indentidades 
+
+
+php artisan make:controller ProdutoController  // vai criar o controller na pasta controllers
+
+/*      Route :: get( '/' , [produtoController ::class, 'index'])->name('produto.index');
+
+  /*    Route :: get('/produto/{id?}', [produtoController ::class,'show'])->name('produto.show');
+
+
+o route cache não e bom usar em modo de produção 
+
+
+
+
+como conectar ao banco de dados
+
+indo no env da aplicação 
+
+
+
+o laravel criar algumas migration no database  que são de tabelas , senhas e tokens , create de filas , e tabela de tokens
+
+
+os migrations tem que ser criados
+
+php artisan make:migration exemplo_nome_alterar  // criar um migration para trocar o nome de algo 
+
+
+
+php artisan migrate:rollback ele tira o ultimo migration que a pessoa fez
+
+
+
+melhor jeito de criar um migrate é : php artisan make:migration create_produtos_table
+  colocar sufixo para facilitar . exp: exemplo_de_algo -> desse jeito e melhor para criar , mas 
+
+  tem esse jeito para criar , php artisan make:migration prdutos --create=produtos // --create é o nome da tabela 
+
+
+  depois de executar o migration e bom usar o php artisan migrate , vai salvar a tabela no banco de dados e criar ela lá 
+
+
+para trocar um nome da tabela , você tem que criar outro migration para executar a outra tabela e alterar
+
+
+vou fazer relacionamento entre produtos e usuario
+
+        $table->foreign('id_user')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');  
+        // se deletar o usuario e o usuario tiver alguns produtos que cadastrou , vai deletar os produtos que aquele usuairo cadastrou
+
+
+usando as mágicas do laravel 
+
+ php artisan make:model Categoria --migration 
+
+ desse jeito criar o model e o migration
+
+ e tem outro jeito que criar o model , migration , controler e o resources
+
+ php artisan make:model Categoria --migration --controller --resource
+
+ php artisan make:model Categoria -mcr outra maneira de fazer 
+
+ tem que se atentar em um detlhe no migrition , em que eles foram criados 
+ para ser executado em sequencial , por isso tem data , ano e dia . acontece que 
+ na execução do script ele vai de cima para baixo . so que tem um detalhe , eu criei uma chaves estrageira 
+ na qual não tem uma tabela categoria , em que pode gerar erro . nisso eu vou ter que mudar a data do migration prdutos
+ para o categorias gerar primeiro e depois os prdutos.alterei a data e deu certo. 2024_02_27_151153
+
+ php artisan migrate:fresh usar esse comando 
+
+
+
+
+ aprendendo sobre  Seeder 
+
+ php artisan make:seeder NomeSeeder
+
+ para finalizar o seeder depois de finalizar ele , usar : php artisan db:seed 
+
+
+aprendendo factory 
+
+criei o factory com   php artisan make:factory CategoriaFactory
+
+nele você pode criar registro fake 
+
+para executar ele , precisar criarum seeder para funcionar bem 
+
+
+magia do laravel 
+
+php artisan make:model NomeQualquer -mfscr  
+
+mfscr -> ele vai criar o model, factory , seed , controler e resource
+
+
+factory Produto
+
+
+arrumei 
+
+
+
+
+aprendendo o blade
+
+no controler e importante depois de fazer , colocar no routes e se for renderizar 
+colocar direito a view certa 
+
+Route:: resource('produtos', ProdutosController::class);
+  // não esquecer do models 'exemplo', controler aqui 
+
+no controler : 
+
+    public function index()
+    {
+
+          //  $produtos = Produtos::all();
+          //  return dd($produtos); 
+
+          $nome = 'Natan';
+          $idade = '21';
+          $html = "<h1>Olá eu sou H1</h1>"; // algo unico 
+          
+                   return view('site.empresa',compact('nome', 'idade','html'));
+        
+
+    }
+
+    colocar o blade certo para ver o que vai retornar 
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1> empresa</h1>
+   meu nome é  {{$nome}} e minha idade é {{$idade}} anos
+
+ {!! $html !!}  // algo unico
+</body>
+</html>
