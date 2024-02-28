@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\ProdutosController;
+use App\Http\Controllers\SiteController;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,6 +18,9 @@ use App\Http\Controllers\ProdutosController;
 
 
 Route:: resource('produtos', ProdutosController::class);
+
+Route::get('/',[ SiteController::class, 'index'])->name('site.index');
+    
 
               
 
