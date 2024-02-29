@@ -17,12 +17,12 @@ use App\Http\Controllers\SiteController;
 */
 
 
-Route:: resource('produtos', ProdutosController::class);
+Route::resource('produtos', ProdutosController::class);
 
 Route::get('/',[ SiteController::class, 'index'])->name('site.index');
     
 
-              
+Route::get('produtos/{slug}', [SiteController::class , 'details'])->name('site.details');      
 
 
 

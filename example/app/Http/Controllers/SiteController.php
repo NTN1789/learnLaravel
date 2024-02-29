@@ -9,7 +9,7 @@ class SiteController extends Controller
     public function index()
     {
 
-           $produtos = Produtos::paginate(3);
+           $produtos = Produtos::paginate(4);
           //  return dd($produtos); 
 
      
@@ -17,6 +17,13 @@ class SiteController extends Controller
           return view('site/home', compact('produtos'));
         
 
+    }
+
+
+    public function details ($slug)
+    {
+        $produtos = Produtos::where('slug', $slug);
+        return view('site/details', compact('produtos')->first());
     }
 
 }
