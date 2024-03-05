@@ -1,23 +1,20 @@
-@extends('site.layout')
-@section('title', 'Detalhes')
+@extends('site/layout')
+@section('title','Detalhes')
 @section('conteudo')
 
-<div class="row container"> 
-        <div class="col s12 m6"> 
-
-  <img src=" {{$produtos->imagem}}" class="responsice-img" />
+<div class="row container"> <br>
+    <div class="col s12 m6">
+        <div class="card-image">
+           <img src="{{ $produto->imagem }}">
         </div>
-
-        <div class="col s12 m6">
-
-            <h1> {{ $produtos->nome}}</h1>
-
-            <h1> {{ $produtos->descricao}}</h1>
-
-            <button class="btn orange btn-large">comprar</button>
-        </div>
+    </div>    
+    <div class="col s12 m6">
+        <h4> {{ $produto->nome }}</h4>
+        <h4> R$ {{ number_format($produto->preco, 2, ',' , '.') }}</h4>
+  
+   
+            <button class="btn orange btn-large">Comprar</button>
+       
+    </div>
 </div>
-
-
-
 @endsection

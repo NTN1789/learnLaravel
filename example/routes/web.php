@@ -22,7 +22,9 @@ Route::resource('produtos', ProdutosController::class);
 Route::get('/',[ SiteController::class, 'index'])->name('site.index');
     
 
-Route::get('produtos/{slug}', [SiteController::class , 'details'])->name('site.details');      
+Route::get('/produto/{id}', [SiteController::class, 'details'])->name('site.details');     
+
+
 
 
 
