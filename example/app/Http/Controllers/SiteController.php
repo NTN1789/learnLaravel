@@ -29,4 +29,14 @@ class SiteController extends Controller
       
 }
 
+
+public function categoria($id)
+{
+    $produtos = Produtos::where('id_categoria',$id)->get();
+    
+    return view('site/categoria', compact('produtos'));
+ 
+  
+}
+
 }
