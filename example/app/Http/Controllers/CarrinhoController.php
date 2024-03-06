@@ -27,4 +27,27 @@ class CarrinhoController extends Controller
 
         return redirect()->route('site.carrinho')->with('sucesso', 'Produto adicionado no carrinho com sucesso!');
     }
+
+
+        public function removerCarrinho(Request $request){
+            \Cart::remove($request->id);
+            return redirect()->route('site.carrinho')->with('sucesso', 'Produto removido do carrinho com sucesso!');
+        }
+
+        public function atualizarCarrinho(Request $request){
+            \Cart::update($request->id, [
+                    'quantity' => [
+                        'relative' => false, // this is optional, determines if the quantity is relative or not
+                        'value' => $request->quantity,
+                    ],
+            ]);
+            return redirect()->route('site.carrinho')->with('sucesso', 'Produto atualizado do carrinho com sucesso!');
+        }
+
+
+
+        public function limparCarrinho(){
+            \Cart::clear();
+            return redirect()->route('site.carrinho')->with('aviso', 'Carrinho limpo com sucesso!');
+        }
 }
