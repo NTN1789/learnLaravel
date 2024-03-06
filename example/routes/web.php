@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\ProdutosController;
 use App\Http\Controllers\SiteController;
+use App\Http\Controllers\CarrinhoController;
 
 /*
 |--------------------------------------------------------------------------
@@ -26,8 +27,8 @@ Route::get('/produto/{id}', [SiteController::class, 'details'])->name('site.deta
 
 Route::get('/categora/{id}', [SiteController::class, 'categoria'])->name('site.categoria');
 
-
-
+Route::get ('/carrinho', [CarrinhoController::class, 'carrinhoLista'])->name('site.carrinho');
+Route::post ('/carrinho', [CarrinhoController::class, 'adicionarCarrinho'])->name('site.addcarinho');
 
 /*Route::get('/empresa', function () {
     return view('site/empresa');

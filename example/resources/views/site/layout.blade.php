@@ -9,48 +9,50 @@
  
     <title>@yield('title')</title>
      <!-- Compiled and minified CSS -->
+
      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
-
-     <!-- Compiled and minified JavaScript -->
      <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-     
      <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+ 
 
-     <script>
-      document.addEventListener('DOMContentLoaded', function() {
-     var elems = document.querySelectorAll('.dropdown-trigger');
-     var instances = M.Dropdown.init(elems, options);
-   });
-   $('.dropdown-trigger').dropdown();
-    </script>
+
+
 </head>
 <body>
-  <ul id='dropdown1' class='dropdown-content'>
-    @foreach ($categoriasMenu as $categoriaM)
-    <ul id='dropdown1' class='dropdown-content'>
+
               
-      <li><a href="#!">{{$categoriaM->nome}}  </a> </li>
-    </ul>
-    @endforeach
-              
-    <li><a href="#!"><i class="material-iconst">view_module</i>four   </a></li>
-  </ul>
+ 
     <nav class="blue">
         <div class="nav-wrapper container">
-          <a href="#" class="brand-logo left" >learnLaravel</a>
-          <ul id="nav-mobile" class="right">
-            <li><a href="">Home</a></li>
-            <a class='dropdown-trigger btn' data-target='dropdown'>categorias</a>
-          
-            <li><a href="">carrinho</a></li>
+          <a href="#" class="brand-logo center" >learnLaravel</a>
+         <ul id="nav-mobile" class="left">
+
+           <li><a href="{{ route('site.index') }}">Home</a></li>
+           <li><a href="" class="dropdown-trigger" data-target='categorias'>Categorias <i class="material-icons right">expand_more</i></a></li>
            
+           <li><a href="{{ route('site.carrinho') }}">carrinho  <span class="new badge blue " data-badge-caption="">{{\Cart::getContent()->count()}} </span></a></li>
           </ul>
+
+          <ul id='categorias' class='dropdown-content'>
+            @foreach($categoriasMenu as $categoriaM)
+              <li> <a href="{{route('site.categoria', $categoriaM->id)}}">{{$categoriaM -> nome}}</a>
+             
+              </li>
+            @endforeach
+          </ul>
+           
+         
         </div>
       </nav>
 
    @yield('conteudo')
 
-
+   <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      var elems = document.querySelectorAll('.dropdown-trigger');
+      var instances = M.Dropdown.init(elems);
+    });
+</script>
  
 
 </body>
