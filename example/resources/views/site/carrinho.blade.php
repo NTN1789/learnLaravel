@@ -33,7 +33,22 @@
           </div>
         </div>
     @endif
-<h3> seu carinho tem:{{$itens->count()}}  produtos.</h3>
+
+     @if ($itens->count()  == 0  )
+        
+     <div class="card orange">
+      <div class="card-content white-text">
+        <div class="card blue-grey darken-1">
+          <div class="card-content white-text">
+            <span class="card-title"> seu carrinho está vazio </span>
+            <p>  aproveite nossas promoções </p>
+          </div>
+
+        </div>
+      </div>
+    </div>
+     @else 
+     <h3> seu carinho tem:{{$itens->count()}}  produto.</h3>
     
    
     <table class="striped">
@@ -56,7 +71,7 @@
                     <form action="{{route('site.atualizarCarrinho')}}" method="POST" enctype="multipart/form-data">
                     @csrf
                     <input type="hidden" name="id" value="{{$item->id}}">
-                    <td><input type="number" style="width: 40" name="quantity" value="{{$item->quantity}}" /> </td>
+                    <td><input type="number" style="width: 40" name="quantity"  min="1" value="{{$item->quantity}}" /> </td>
                     <td><button class="btn-floating  waves-effect waves-light orange"><i class="material-icons">refresh</i></button></td>
                     </form>
                    
@@ -70,10 +85,14 @@
     @endforeach      
         </tbody>
       </table>
-  </div>
+         
+      <h5>valor total:  R$ {{ number_format(\Cart::getTotal(), 2, ',' , '.') }}</h5>
+     @endif
+
+ 
 
   <div class="row container center"> 
-    <button class="btn waves-effect waves-light blue ">Continuar comprando <i class="material-icons right">arrow_back</i></button>
+    <a href="{{route('site.index')}}" class="btn waves-effect waves-light blue ">Continuar comprando <i class="material-icons right">arrow_back</i></a>
     <a href="{{route('site.limparCarrinho')}}" class="btn  waves-effect waves-light blue ">Limpar carrinho <i class="material-icons right">clear</i></a>
     <button class="btn  waves-effect waves-light blue ">finalizar pedido <i class="material-icons right">check</i></button>
 
