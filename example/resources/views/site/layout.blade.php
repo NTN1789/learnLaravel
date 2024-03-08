@@ -41,21 +41,23 @@
           @auth
           <ul id="nav-mobile" class="right">
             <li><a href="" class="dropdown-trigger" data-target='dropdown2'>olá {{auth()->user()->firstName}}<i class="material-icons right">expand_more</i></a></li>
-  
+      <ul id='dropdown2' class='dropdown-content'>
+     
+              <li> <a href="{{route('admin.dashboard')}}">Dashboard </a></li>
+              <li> <a href="{{route('login.logout')}}">Sair </a></li>
+          </ul>
            </ul>
 
            @else 
 
            <ul id="nav-mobile" class="right">
-            <li><a href="{{route('login.form')}}" class="dropdown-trigger" data-target='dropdown2'>Login <i class="material-icons right">expand_more</i></a></li>
+            <li><a href="{{route('login.form')}}">Login <i class="material-icons right">lock</i></a></li>
   
            </ul>
 
 
            @endauth 
  
-
-
 
 
 
@@ -70,11 +72,7 @@
             @endforeach
           </ul>
            
-          <ul id='dropdown1' class='dropdown-content'>
-     
-              <li> <a href="{{route('admin.dashboard')}}">Dashboard </a></li>
-              <li> <a href="{{route('login.logout')}}">Sair </a></li>
-          </ul>
+      
          
         </div>
       </nav>

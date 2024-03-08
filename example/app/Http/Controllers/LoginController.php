@@ -25,7 +25,7 @@ class LoginController extends Controller
             if (Auth::attempt($credenciais)) {        // o attempt verificar se tem o usuario no banco de dados
                        $request->session()->regenerate(); 
 
-                       return redirect()->intended('/admin/dashboard');    // o intended ,  redireciona para algum lugar
+                       return redirect()->intended(route('admin.dashboard'));    // o intended ,  redireciona para algum lugar
           
                         
 
@@ -43,5 +43,9 @@ class LoginController extends Controller
 
         $request->session()->invalidate();
         $request->session()->regenerateToken();
+
+
+        return redirect(route('site.index'));
+
     }
 }

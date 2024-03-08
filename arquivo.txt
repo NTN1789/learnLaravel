@@ -179,3 +179,16 @@ no controler :
 
     @csrf -> vai gerar    um input invisível e um token para proteger a aplicação 
     
+
+    como aplicar um middleware ? 
+
+    você pode aplicar na rota onde geralmente acontece
+
+    o auth já vem um middleware pronto para usar , você pode modificar ele também 
+
+      tem como aplicar no controler também 
+
+
+
+
+      criando um middleware
