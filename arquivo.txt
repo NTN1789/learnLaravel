@@ -192,3 +192,6 @@ no controler :
 
 
       criando um middleware
+
+
+      php artisan make:middleware CheckEmail
