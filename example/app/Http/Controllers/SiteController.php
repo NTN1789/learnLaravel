@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Produtos;
 use App\Models\Categoria;
+use Illuminate\Support\Facades\Gate;
 class SiteController extends Controller
 {
     public function index()
@@ -25,8 +26,17 @@ class SiteController extends Controller
     {
         $produto = Produtos::where('id',$id)->first();
         
-        return view('site/details', compact('produto'));
+       // Gate::authorize('ver-produto', $produto);
+     //    $this->authorize('ver-produto', $produto);
+       
+     if(Gate::allows('ver-produto', $produto)){
+
+         return view('site/details', compact('produto'));
+     }
      
+     if(Gate::denies('ver-produto', $produto)){
+        return redirect()->route('site.home');
+     }
       
 }
 

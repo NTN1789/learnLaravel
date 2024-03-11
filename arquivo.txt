@@ -195,3 +195,27 @@ no controler :
 
 
       php artisan make:middleware CheckEmail
+
+
+      vou criar um controller que vai gerenciar a logica do usuario 
+
+
+      criei 
+
+
+      fiz a parte de lembrar de mim , em que o cokkies do usuario ficar salvo 
+
+
+      autorização com Gates algo muito importante para caso o usuario não estiver conectado  , para ele fazer login 
+      tem como fazer as pessoas não verem os produtos 
+
+
+php artisan make:policy ProdutoPolicy
+      usando Policy 
+
+no provider , ter que colocar o policys lá
+
+No final o Policy atua como o Gate. 
+Mas no Policy você pode fazer varias regras por Model muito mais organizado,
+ mas se você precisa de algo simples e direto pode ir de Gate.
+ Mas não deve ficar legal o uso de varios Gate. No final você pode ver o que ficar melhor no seu projeto.
