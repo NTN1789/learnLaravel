@@ -29,14 +29,26 @@ class SiteController extends Controller
        // Gate::authorize('ver-produto', $produto);
      //    $this->authorize('ver-produto', $produto);
        
-     if(Gate::allows('ver-produto', $produto)){
+  //   if(Gate::allows('ver-produto', $produto)){
 
-         return view('site/details', compact('produto'));
-     }
+    // }
+
+  /*  if(auth()->user()->can('verProduto', $produto)){
+        return view('site/details', [
+            'produto' => $produto
+        ]);
+    }
+
+    if(auth()->user()->cannot('verProduto', $produto)){
+        return redirect()->route('site.index');
+    }
+*/
+
+    return view('site/details', compact('produto'));
      
-     if(Gate::denies('ver-produto', $produto)){
+   /*  if(Gate::denies('ver-produto', $produto)){
         return redirect()->route('site.home');
-     }
+     }*/
       
 }
 

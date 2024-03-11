@@ -1,5 +1,5 @@
 @extends('site/layout')
-@section('title','Detalhes')
+@section('title','Detalhes do Produto')
 @section('conteudo')
 
 <div class="row container"> <br>
