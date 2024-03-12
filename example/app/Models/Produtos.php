@@ -12,7 +12,7 @@ class Produtos extends Model
     protected $table = 'produtos';
    
     public function user() {
-        return $this->belongsTo(User::class, 'id_user', 'id');
+        return $this->belongsTo(User::class, 'id_user', 'id'); // pertence a um usuario ou categoria 
     }
 
     public function categoria() {

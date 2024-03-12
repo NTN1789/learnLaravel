@@ -14,7 +14,7 @@
 
         <div class="row titulo ">
             <h1 class="left">Produtos</h1>
-            <span class="right chip">{{ $produtos->count() }} produtos exibidos nessa página</span>
+         {{--    <span class="right chip">{{ $produtos->count() }} produtos exibidos nessa página</span>--}}
         </div>
 
         <nav class="bg-gradient-blue">
@@ -45,7 +45,7 @@
                 </thead>
 
                 <tbody>
-                    @foreach ($produtos as $produto)
+                   {{--  @foreach ($produtos as $produto)
                         <tr>
                             <td><img src="{{ url("storage/{$produto->imagem}") }}" class="circle "></td>
                             <td>#{{ $produto->id }}</td>
@@ -57,13 +57,13 @@
                                 @include('admin.produtos.delete')
                             </td>
                         </tr>
-                    @endforeach
+                    @endforeach--}}
                 </tbody>
             </table>
         </div>
 
         <div class="center">
-            {{ $produtos->links('custom.pagination') }}
+         
         </div>
     </div>
 @endsection

@@ -2,7 +2,7 @@
 <div id="create" class="modal">
     <div class="modal-content">
         <h4><i class="material-icons">playlist_add_circle</i> Novo produto</h4>
-        <form class="col s12" action="{{ route('admin.produto.store') }}" method="POST" enctype="multipart/form-data">
+      {{--   <form class="col s12" action="{{ route('admin.produtos.store') }}" method="POST" enctype="multipart/form-data">
             @csrf
             <input type="hidden" name="user_id" value="{{ Auth::user()->id }}">
             <div class="row">
@@ -47,3 +47,4 @@
 
         </form>
         </div>
+         --}}

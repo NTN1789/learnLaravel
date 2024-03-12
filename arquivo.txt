@@ -230,3 +230,5 @@ Mas no Policy você pode fazer varias regras por Model muito mais organizado,
 
  agora fazendo gerar os dados do grafico , pelo o DashboardController
  
+ aprendendo sobre hasMany , a tabela produtos tem um relacionamento de 
+ muitos para um , muitos produtos pode pertencer uma categoria 
