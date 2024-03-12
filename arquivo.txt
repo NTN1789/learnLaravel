@@ -219,3 +219,14 @@ No final o Policy atua como o Gate.
 Mas no Policy você pode fazer varias regras por Model muito mais organizado,
  mas se você precisa de algo simples e direto pode ir de Gate.
  Mas não deve ficar legal o uso de varios Gate. No final você pode ver o que ficar melhor no seu projeto.
+
+
+
+
+ fazer aparecer a quantidade de usuarios
+
+
+
+
+ agora fazendo gerar os dados do grafico , pelo o DashboardController
+ 
