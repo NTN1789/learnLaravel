@@ -21,9 +21,9 @@ use App\Http\Controllers\UserController;
 */
 
 
-Route::resource('produtos', ProdutosController::class);
+//Route::resource('produtos', ProdutosController::class);
 
-Route::resource('users', UserController::class);
+//Route::resource('users', UserController::class);
 
 Route::get('/',[ SiteController::class, 'index'])->name('site.index');
     
@@ -43,13 +43,18 @@ Route::post('/auth' , [LoginController::class, 'auth'])->name('login.auth');
 
 Route::get('/admin/dashboard', [DashboardController::class, 'index'])->name('admin.dashboard')->middleware(['auth', 'checkEmail']);
 
-Route::get('/admin/produtos',function() {
-        return view('admin.produtos');
-})->name('admin.produtos');
+Route::get('/register', [LoginController::class, 'create'])->name('login.create');
+
 Route::get('/logout', [LoginController::class, 'logout'])->name('login.logout');
 
+Route::get('/admin/produtos')->name('admin.produtos');
 
-Route::get('/register', [LoginController::class, 'create'])->name('login.create');
+Route::delete('/admin/produtos/delete/{id}', [ProdutosController::class, 'destroy'])->name('admin.produtos.delete');
+
+Route::post('/admin/produtos/store', [ProdutosController::class, 'store'])->name('admin.produtos.store');
+
+
+
 
 
 

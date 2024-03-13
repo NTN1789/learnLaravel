@@ -39,7 +39,17 @@ class ProdutosController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $produto = $request->all();
+
+        if($request->imagem) {
+          $produto['imagem'] = $request->imagem->store('produtos');
+        }
+
+        $produto['slug'] = Str::slug($request->nome);
+
+        $produto = Produtos::create($produto);
+
+        return redirect()->route('admin.produtos')->with('sucesso', 'Produto cadastrado com sucesso!');
     }
 
     /**
@@ -71,6 +81,8 @@ class ProdutosController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $produto = Produtos::find($id);
+        $produto->delete();
+        return redirect()->route('admin.produtos')->with('sucesso', 'Produto removido com sucesso!');
     }
 }

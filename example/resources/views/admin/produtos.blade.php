@@ -14,7 +14,7 @@
 
         <div class="row titulo ">
             <h1 class="left">Produtos</h1>
-         {{--    <span class="right chip">{{ $produtos->count() }} produtos exibidos nessa página</span>--}}
+           <span class="right chip">{{ $produtos->count() }} produtos exibidos nessa página</span>
         </div>
 
         <nav class="bg-gradient-blue">

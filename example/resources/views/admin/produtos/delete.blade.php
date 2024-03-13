@@ -1,5 +1,5 @@
 <!-- Modal Structure -->
- {{--   <div id="delete-{{ $produto->id }}" class="modal">
+   <div id="delete-{{ $produto->id }}" class="modal">
     <div class="modal-content">
         <h4><i class="material-icons">delete</i> tem Certeza?</h4>
         <div class="row">
@@ -19,4 +19,3 @@
 
 </div>
 
---}}
