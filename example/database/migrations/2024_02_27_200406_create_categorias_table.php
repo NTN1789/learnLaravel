@@ -18,8 +18,13 @@ return new class extends Migration
             $table->string('nome');
             $table->text('descricao');
             $table->timestamps();
+
+       
+
         });
     }
+
+    // que merda
 
     /**
      * Reverse the migrations.
