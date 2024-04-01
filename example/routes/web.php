@@ -47,11 +47,11 @@ Route::get('/register', [LoginController::class, 'create'])->name('login.create'
 
 Route::get('/logout', [LoginController::class, 'logout'])->name('login.logout');
 
-Route::get('/admin/produtos')->name('admin.produtos');
+Route::get('/admin/produtos', [ProdutosController :: class,'index'])->name('admin.produtos');
 
 Route::delete('/admin/produtos/delete/{id}', [ProdutosController::class, 'destroy'])->name('admin.produtos.delete');
 
-Route::post('/admin/produtos/store', [ProdutosController::class, 'store'])->name('admin.produtos.store');
+//Route::post('/admin/produtos/store', [ProdutosController::class, 'store'])->name('admin.produtos.store');
 
 
 

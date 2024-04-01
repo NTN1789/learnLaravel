@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Produtos;
-
+use App\Models\Categoria;
 class ProdutosController extends Controller
 {
     /**
@@ -13,8 +13,9 @@ class ProdutosController extends Controller
     public function index()
     {
 
-           $produtos = Produtos::paginate(3);
-          //  return dd($produtos); 
+           $produtos = Produtos::paginate(5);
+           $categorias = Categoria::all();
+                return view('admin.produtos', compact('produtos', 'categorias')); 
 
      
          // return view('site/home', compact('nome','idade','html'))

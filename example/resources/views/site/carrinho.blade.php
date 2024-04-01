@@ -25,7 +25,7 @@
           <div class="card-content white-text">
             <div class="card blue-grey darken-1">
               <div class="card-content white-text">
-                <span class="card-title"> tudo bem </span>
+                <span class="card-title">  </span>
                 <p>     {{$mensagem}} </p>
               </div>
    

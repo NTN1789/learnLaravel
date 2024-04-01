@@ -3,7 +3,13 @@
     {{-- Previous page Link  --}}
 
     @if ($paginator->onFirstPage())
-            <li class="disabled"><i class="material-icons"></i> </li>        
+ 
+            <li class="disabled"><i class="material-icons"></i> </li>  
+
+       
+    
+            
+         
    
     @else 
             <li class="waves-effect"><a href="{{$paginator->previousPageUrl()}}"><i class="material-icons">chevron_left </i></a> </li>
@@ -11,16 +17,15 @@
 
 
 
-{{--Pagination elements --}}
 
                 @foreach ($elements as $element)
-                    {{-- "Three Dots" separator --}}
+                  
                
                @if (is_string($element))
                         <li class="disabled">{{ $element  }} </li>
                @endif
 
-               {{--Array Links --}}
+               
                
                @if (is_array($element))
                @foreach ($element as $page => $url)
