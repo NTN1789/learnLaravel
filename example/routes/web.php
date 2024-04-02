@@ -51,7 +51,7 @@ Route::get('/admin/produtos', [ProdutosController :: class,'index'])->name('admi
 
 Route::delete('/admin/produtos/delete/{id}', [ProdutosController::class, 'destroy'])->name('admin.produtos.delete');
 
-//Route::post('/admin/produtos/store', [ProdutosController::class, 'store'])->name('admin.produtos.store');
+Route::post('/admin/produtos/store', [ProdutosController::class, 'store'])->name('admin.produtos.store');
 
 
 

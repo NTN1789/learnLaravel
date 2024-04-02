@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Produtos;
 use App\Models\Categoria;
+use Illuminate\Support\Str;
 class ProdutosController extends Controller
 {
     /**
