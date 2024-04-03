@@ -16,8 +16,10 @@ class SiteController extends Controller
 
      
          // return view('site/home', compact('nome','idade','html'))
-          return view('site/home', compact('produtos'));
-        
+        //  return view('site/home', compact('produtos'));
+            return response()->json([
+                'produtos' => $produtos,
+            ],200);
 
     }
 
@@ -44,8 +46,12 @@ class SiteController extends Controller
     }
 */
 
-    return view('site/details', compact('produto'));
-     
+  //  return view('site/details', compact('produto'));
+    
+    return response()->json([
+        'produto' => $produto,
+    ], 200);
+
    /*  if(Gate::denies('ver-produto', $produto)){
         return redirect()->route('site.home');
      }*/
@@ -59,11 +65,45 @@ public function categoria($id)
 {
     $categoria =  Categoria::find($id);
 
-    $produtos = Produtos::where('id_categoria',$id)->paginate(3);
+    $produtos = Produtos::where('id_categoria',$id)->paginate(4);
     
-    return view('site/categoria', compact('produtos', 'categoria'));
- 
+   // return view('site/categoria', compact('produtos', 'categoria'));
+            return response()->json([
+                'produtos' => $produtos,
+                'categoria' => $categoria,
+              
+            ],200);
   
 }
+
+
+
+        public function createCategoria(Request $request)
+        {
+            $categoria = $request->all();
+         
+            $categoria = Categoria::create($categoria); 
+
+            return response()->json([
+                'categoria' => $categoria,
+                'message' => 'Categoria criada com sucesso!'
+            ], 200);
+        }
+
+
+
+        public function destroy(string $id)
+        {
+         
+            $categoria = Categoria::find($id);
+            $categoria->delete();
+            
+
+            return response()->json([
+                'categoria' => $categoria,
+                'message' => 'Categoria excluida com sucesso!'
+            ], 200);
+        }
+
 
 }

@@ -16,12 +16,15 @@ class ProdutosController extends Controller
 
            $produtos = Produtos::paginate(5);
            $categorias = Categoria::all();
-                return view('admin.produtos', compact('produtos', 'categorias')); 
+    //                return view('admin.produtos', compact('produtos', 'categorias')); 
 
      
          // return view('site/home', compact('nome','idade','html'))
-          return view('site/home', compact('produtos'));
-        
+       //   return view('site/home', compact('produtos'));
+            return response()->json([
+                'produtos' => $produtos,
+                
+            ]);  
 
     }
 
@@ -51,7 +54,13 @@ class ProdutosController extends Controller
 
         $produto = Produtos::create($produto);
 
-        return redirect()->route('admin.produtos')->with('sucesso', 'Produto cadastrado com sucesso!');
+     //   return redirect()->route('admin.produtos')->with('sucesso', 'Produto cadastrado com sucesso!');
+
+        return response()->json([
+            'produto' => $produto,
+            'status' => 'success',
+            'mensagem' => 'Produto cadastrado com sucesso!'
+        ],200);
     }
 
     /**
